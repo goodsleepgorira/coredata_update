@@ -124,39 +124,35 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         //キーボードをしまう。
         testSearchBar.endEditing(true)
 
+        //検索結果配列を作る。
+        makeSearchResult()
+        
+        //テーブルを再読み込みする。
+        testTableView.reloadData()
+    }
+
+
+    //検索結果配列作成メソッド
+    func makeSearchResult() {
+    
         //検索結果配列を空にする。
         searchResult.removeAll()
         
         //フェッチリクエストのインスタンスを生成する。
         let fetchRequest = NSFetchRequest(entityName: "Book")
-
+        
         if(testSearchBar.text != "") {
-
             //属性nameが検索文字列と一致するデータをフェッチ対象にする。
             fetchRequest.predicate = NSPredicate(format:"name CONTAINS %@", testSearchBar.text!)
         }
-
+        
         do {
             //フェッチリクエストを実行する。
             searchResult = try managedContext.executeFetchRequest(fetchRequest) as! [Book]
-
+            
         } catch {
             print(error)
         }
-        
-        //テーブルを再読み込みする。
-        testTableView.reloadData()
     }
-    
-    
-    //保存ボタン押下時の呼び出しメソッド
-    @IBAction func pushSaveButton(sender: UIButton) {
-    }
-    
-    
-    //取り消しボタン押下時の呼び出しメソッド
-    @IBAction func pushCancelButton(sender: UIButton) {
-    }
-    
     
 }
