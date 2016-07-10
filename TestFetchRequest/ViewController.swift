@@ -142,7 +142,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         let fetchRequest = NSFetchRequest(entityName: "Book")
         
         if(testSearchBar.text != "") {
-            //属性nameが検索文字列と一致するデータをフェッチ対象にする。
+            //属性nameが検索文字列を含むデータをフェッチ対象にする。
             fetchRequest.predicate = NSPredicate(format:"name CONTAINS %@", testSearchBar.text!)
         }
         
@@ -154,5 +154,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
             print(error)
         }
     }
-    
+
+
+
 }
