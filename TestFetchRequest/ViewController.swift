@@ -38,23 +38,31 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
     
     //本を保存するメソッド
     func insertBook(){
+
         do {
-            //本のオブジェクトを管理オブジェクトコンテキストに格納する。
-            for data in dataList {
-                let book = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedContext) as! Book
-                book.name = data[0] as? String        //雑誌名
-                book.publisher = data[1] as? String   //出版社
-                book.price = data[2] as? Int          //価格
-                book.approvalRate = data[3] as? Float //支持率
+            //Bookエンティティの件数を取得する。。
+            let fetchRequest = NSFetchRequest(entityName: "Book")
+            fetchRequest.resultType = .CountResultType
+            let result = try managedContext.executeFetchRequest(fetchRequest) as! [Int]
+            
+            if(result[0] == 0){
+                //本のオブジェクトを管理オブジェクトコンテキストに格納する。
+                for data in dataList {
+                    let book = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedContext) as! Book
+                    book.name = data[0] as? String        //雑誌名
+                    book.publisher = data[1] as? String   //出版社
+                    book.price = data[2] as? Int          //価格
+                    book.approvalRate = data[3] as? Float //支持率
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy/M/d H:mm:ss"
+                    book.releaseDate = dateFormatter.dateFromString(data[4] as! String)! //発売日
+                }
                 
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat = "yyyy/M/d H:mm:ss"
-                book.releaseDate = dateFormatter.dateFromString(data[4] as! String)! //発売日
+                //管理オブジェクトコンテキストの中身を保存する。
+                try managedContext.save()
             }
-            
-            //管理オブジェクトコンテキストの中身を保存する。
-            try managedContext.save()
-            
+                
         } catch {
             print(error)
         }
@@ -93,7 +101,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         
         //セルのラベルに本のタイトルを設定する。
         let book = searchResult[indexPath.row]
-        cell.textLabel?.text = "\(book.name!) \(book.publisher!) \(book.price!)円"
+        cell.textLabel?.text = "\(book.name!) \(book.price!)円"
 
         return cell
     }
@@ -136,4 +144,15 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         //テーブルを再読み込みする。
         testTableView.reloadData()
     }
+    
+    
+    //保存ボタン押下時の呼び出しメソッド
+    @IBAction func pushSaveButton(sender: UIButton) {
+    }
+    
+    
+    //取り消しボタン押下時の呼び出しメソッド
+    @IBAction func pushCancelButton(sender: UIButton) {
+    }
+    
 }

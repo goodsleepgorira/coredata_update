@@ -24,8 +24,34 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoE-zt-YET">
+                                <rect key="frame" x="0.0" y="64" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.53854677129999995" blue="0.98409598210000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BUJ-3y-qQy"/>
+                                </constraints>
+                                <state key="normal" title="保存">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushSaveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rit-tD-Nx2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPU-VA-erk">
+                                <rect key="frame" x="160" y="64" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.27155152710000002" green="0.68077021059999998" blue="0.4029012085" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JTe-1A-wh1"/>
+                                </constraints>
+                                <state key="normal" title="取り消し">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushCancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1V9-pe-TOR"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m7K-Aq-rt6">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="94" width="320" height="474"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TestCell" id="ju3-7M-KiP">
@@ -45,12 +71,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="m7K-Aq-rt6" secondAttribute="bottom" id="0b5-iJ-R0k"/>
+                            <constraint firstItem="UPU-VA-erk" firstAttribute="leading" secondItem="yoE-zt-YET" secondAttribute="trailing" id="5QI-M6-EpA"/>
+                            <constraint firstAttribute="trailing" secondItem="UPU-VA-erk" secondAttribute="trailing" id="9ZL-p6-6C1"/>
+                            <constraint firstItem="yoE-zt-YET" firstAttribute="top" secondItem="wPA-IX-6Mn" secondAttribute="bottom" id="FJl-DW-ZEk"/>
                             <constraint firstItem="wPA-IX-6Mn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IuZ-T1-Oub"/>
                             <constraint firstAttribute="trailing" secondItem="m7K-Aq-rt6" secondAttribute="trailing" id="LpJ-1W-wJL"/>
-                            <constraint firstItem="m7K-Aq-rt6" firstAttribute="top" secondItem="wPA-IX-6Mn" secondAttribute="bottom" id="cu8-Kd-1y6"/>
+                            <constraint firstItem="UPU-VA-erk" firstAttribute="top" secondItem="wPA-IX-6Mn" secondAttribute="bottom" id="UxX-FI-txC"/>
+                            <constraint firstItem="m7K-Aq-rt6" firstAttribute="top" secondItem="UPU-VA-erk" secondAttribute="bottom" id="eAk-EO-YwO"/>
                             <constraint firstItem="wPA-IX-6Mn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eHK-6e-foL"/>
+                            <constraint firstItem="UPU-VA-erk" firstAttribute="width" secondItem="yoE-zt-YET" secondAttribute="width" id="ldB-Xd-Sm0"/>
                             <constraint firstItem="m7K-Aq-rt6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tXZ-Zw-iVi"/>
                             <constraint firstAttribute="trailing" secondItem="wPA-IX-6Mn" secondAttribute="trailing" id="ufH-yb-utW"/>
+                            <constraint firstItem="yoE-zt-YET" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xZ1-Uu-e0E"/>
                         </constraints>
                     </view>
                     <connections>
@@ -60,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="181.33333333333334" y="406.59333333333331"/>
+            <point key="canvasLocation" x="181" y="406"/>
         </scene>
     </scenes>
 </document>
