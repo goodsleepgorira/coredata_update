@@ -5,7 +5,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate{
+class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate{
     
     @IBOutlet weak var testTableView: UITableView!
     @IBOutlet weak var testSearchBar: UISearchBar!
@@ -89,6 +89,9 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
 
         //検証用データを格納する。
         insertBook()
+        
+        //デリゲート先に自分を設定する。
+        testTableView.delegate = self
     }
     
     
@@ -154,5 +157,6 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
     //取り消しボタン押下時の呼び出しメソッド
     @IBAction func pushCancelButton(sender: UIButton) {
     }
+    
     
 }
