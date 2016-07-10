@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
             let result = try managedContext.executeFetchRequest(fetchRequest) as! [Int]
             
             if(result[0] == 0){
-                //本のオブジェクトを管理オブジェクトコンテキストに格納する。
+                //何も保存されていない場合は検証用データを保存する。
                 for data in dataList {
                     let book = NSEntityDescription.insertNewObjectForEntityForName("Book", inManagedObjectContext: managedContext) as! Book
                     book.name = data[0] as? String        //雑誌名
@@ -130,7 +130,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchBarDelega
         if(testSearchBar.text != "") {
 
             //属性nameが検索文字列と一致するデータをフェッチ対象にする。
-            fetchRequest.predicate = NSPredicate(format:"name = %@", testSearchBar.text!)
+            fetchRequest.predicate = NSPredicate(format:"name CONTAINS %@", testSearchBar.text!)
         }
 
         do {
